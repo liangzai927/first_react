@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>state</title>
+  <title>02_state的简写方式</title>
 </head>
 
 <body>
@@ -23,13 +23,11 @@
   <script type="text/babel">
     //创建组件
     class Weather extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          isHot: true
-        }
-        //解决changeWeather中this指向问题
-        this.changeWeather = this.changeWeather.bind(this)
+
+      //初始化状态
+      state = {
+        isHot: true,
+        wind: '微风',
       }
 
       render() {
@@ -37,21 +35,16 @@
         return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
       }
 
-      changeWeather() {
-        //changeWeather放在那里? Weather的原型对象上, 供实例使用
-        //由于changeWeather是作为onClick的回调,所以不是通过实例调用的,是直接调用的,
-        //类中的方法默认开启了局部的严格模式, 所以changeWeather中的this为undefined
-        // console.log(this);
-        this.state.isHot = !this.state.isHot
+      //自定义方法 ===> 要用赋值语句的形式 + 箭头函数
+      changeWeather = () => {
+        const isHot = this.state.isHot
+        this.setState({ isHot: !isHot });
       }
     }
 
     //2. 渲染组件到页面
     ReactDOM.render(<Weather />, document.getElementById('test'))
 
-    // function changeWeather() {
-    //   console.log(this);
-    // }
 
   </script>
 
