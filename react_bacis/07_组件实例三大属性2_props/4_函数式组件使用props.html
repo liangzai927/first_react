@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4_函数式组件使用props</title>
+</head>
+
+<body>
+  <!-- 准备一个 '容器' -->
+  <div id='test'></div>
+  <div id='test1'></div>
+  <div id='test2'></div>
+
+  <!-- 引入react核心库 -->
+  <script src="../js/react.development.js"></script>
+  <!-- 引入react-dom, 用于支持react操作DOM -->
+  <script src="../js/react-dom.development.js"></script>
+  <!-- 引入babel, 用于操作jsx转为js -->
+  <script src="../js/babel.min.js"></script>
+  <!-- 引入prop-types, 用于对组件标签属性进行限制 -->
+  <script src="../js/prop-types.js"></script>
+
+
+  <script type="text/babel">
+    //创建组件
+    function Person(props) {
+      console.log(props);
+      const { name, age, sex } = props
+      return (
+        <ul>
+          <li>姓名:{name}</li>
+          <li>性别:{sex}</li>
+          <li>年龄:{age}</li>
+        </ul>
+      )
+    }
+
+    //对标签属性进行类型、必要性的限制
+    Person.propTypes = {
+      // name: React.PropTypes.string //16.xx版本之后弃用
+      name: PropTypes.string.isRequired, //限制字符串 必传
+      sex: PropTypes.string,
+      age: PropTypes.number,
+      // speak: PropTypes.func, //注意关键字
+    }
+
+    //指定默认值
+    Person.defaultProps = {
+      sex: '没性别',
+      age: 18
+    }
+
+    //渲染组件到页面
+    ReactDOM.render(<Person name="张三" />, document.getElementById('test'))
+
+
+  </script>
+
+
+</body>
+
+</html>

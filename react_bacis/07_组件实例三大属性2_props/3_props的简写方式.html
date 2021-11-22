@@ -27,19 +27,27 @@
   <script type="text/babel">
     //创建组件
     class Person extends React.Component {
+      constructor(props) {
+        //构造器是否接收props, 是否传递给super, 取决于是否希望在构造器中通过他hthis访问props  
+        console.log(props);
+        super(props)
+      }
+
       //对标签属性进行类型、必要性的限制
       static propTypes = {
         // name: React.PropTypes.string //16.xx版本之后弃用
         name: PropTypes.string.isRequired, //限制字符串 必传
         sex: PropTypes.string,
         age: PropTypes.number,
-        speak: PropTypes.func, //注意关键字
+        // speak: PropTypes.func, //注意关键字
       }
+
       //指定默认值
       static defaultProps = {
         sex: '没性别',
         age: 18
       }
+
       render() {
         const { name, age, sex } = this.props;
         //props是只读的 
@@ -55,17 +63,17 @@
     }
 
     //2. 渲染组件到页面
-    ReactDOM.render(<Person name="张三" sex="男" spsak={speak} />, document.getElementById('test'))
-    ReactDOM.render(<Person name="李四" age={19} />, document.getElementById('test1'))
+    ReactDOM.render(<Person name="张三" />, document.getElementById('test'))
+    // ReactDOM.render(<Person name="李四" age={19} />, document.getElementById('test1'))
 
-    const p = { name: '王五', age: 16, sex: '女' }
+    // const p = { name: '王五', age: 16, sex: '女' }
 
     // ReactDOM.render(<Person name={p.name} age={p.age} sex={p.sex} />, document.getElementById('test2'))
-    ReactDOM.render(<Person {...p} />, document.getElementById('test2'))
+    // ReactDOM.render(<Person {...p} />, document.getElementById('test2'))
 
-    function speak() {
-      console.log('说话了');
-    }
+    // function speak() {
+    //   console.log('说话了');
+    // }
 
 
   </script>
