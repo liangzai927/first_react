@@ -27,9 +27,9 @@ export default class App extends Component {
               {/* 在React中,靠路由连接实现组件切换--编写路由链接, v6版本中移除了activeClassName 要用className代替 且要用es6写法 */}
               {/* <NavLink className={({ isActive }) => `list-group-item\n${isActive ? 'demo' : ''}`} to='/about'>About</NavLink>
               <NavLink className={({ isActive }) => `list-group-item\n${isActive ? 'demo' : ''}`} to='/home'>Home</NavLink> */}
-              <MyNavLink to='/abc/about' >About</MyNavLink>
-              <MyNavLink to='/abc/home' >Home</MyNavLink>
-              <MyNavLink to='/abc/text' >Text</MyNavLink>
+              <MyNavLink to='/about' >About</MyNavLink>
+              <MyNavLink to='/home' >Home</MyNavLink>
+              <MyNavLink to='/text' >Text</MyNavLink>
 
             </div>
           </div>
@@ -37,11 +37,11 @@ export default class App extends Component {
             <div className="panel">
               <div className="panel-body">
                 {/* 注册路由 */}
-                {/* react-router6.x版本以上要有下面的写法  routes包裹之后 匹配到一次之后就停止匹配 */}
+                {/* react-router6.x版本以上要有下面的写法 */}
                 <Routes>
-                  <Route path="/abc/about" element={<About />} />
-                  <Route path="/abc/home" element={<Home />} />
-                  <Route path="/abc/text" element={<Text />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/text" element={<Text />} />
                 </Routes>
                 {/* 6.x以下要用这种写法 */}
                 {/* <Switch>
