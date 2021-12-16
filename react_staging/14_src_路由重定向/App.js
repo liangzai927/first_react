@@ -4,8 +4,7 @@ import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
 import MyNavLink from './components/MyNavLink'
-import News from './pages/Home/News'
-import Message from './pages/Home/Message'
+import Text from './components/Text'
 
 export default class App extends Component {
   render() {
@@ -30,21 +29,18 @@ export default class App extends Component {
               <NavLink className={({ isActive }) => `list-group-item\n${isActive ? 'demo' : ''}`} to='/home'>Home</NavLink> */}
               <MyNavLink to='/about' >About</MyNavLink>
               <MyNavLink to='/home' >Home</MyNavLink>
+              <MyNavLink to='/text' >Text</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
                 {/* 注册路由 */}
-                {/* react-router6.x版本以上要有下面的写法  routes包裹之后 匹配到一次之后就停止匹配  v6版本嵌套路由要写在一起 子组件要用<Outlet/> 占位置  */}
-
+                {/* react-router6.x版本以上要有下面的写法  routes包裹之后 匹配到一次之后就停止匹配 */}
                 <Routes>
                   <Route path="/about" element={<About />} />
-                  <Route path="/home" element={<Home />}>
-                    <Route path='news' index element={<News />} />
-                    <Route path='message' element={<Message />} />
-                    <Route path="/home" element={<Navigate to='/home/message' />} />
-                  </Route>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/text" element={<Text />} />
                   {/* 6.x以后用 <Navigate/> 重定向  */}
                   <Route path="*" element={<Navigate to="/about" />} ></Route>
                 </Routes>
