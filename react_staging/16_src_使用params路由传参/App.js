@@ -45,7 +45,7 @@ export default class App extends Component {
                   <Route path="/home" element={<Home />}>
                     <Route path='news' index element={<News />} />
                     <Route path='message' element={<Message />} >
-                      <Route path='details' element={<Detail data={123} />}></Route>
+                      <Route path=':id/:title' element={<Detail />}></Route>
                     </Route>
                     <Route path="/home" element={<Navigate to='/home/message' />} />
                   </Route>

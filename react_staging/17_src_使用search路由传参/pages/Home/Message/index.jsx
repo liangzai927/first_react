@@ -21,8 +21,7 @@ export default class Message extends Component {
               return (
                 <li key={msgObj.id}>
                   {/* 传递search参数 */}
-                  {/* <Link to={`/home/message/detail?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link> */}
-                  <Link to={{ pathname: '/home/message/detail', state: { id: msgObj.id, title: msgObj.title } }}>{msgObj.title}</Link>
+                  <Link to={`/home/message/detail?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>
                 </li>
               )
             })
