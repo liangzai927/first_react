@@ -45,9 +45,9 @@ export default class App extends Component {
                   <Route path="/home" element={<Home />}>
                     <Route path='news' index element={<News />} />
                     <Route path='message' element={<Message />} >
-                      <Route path='detail' element={<Detail />}></Route>
+                      <Route path='detail' element={<Detail data={123} />}></Route>
                     </Route>
-                    <Route path="/home" element={<Navigate to='/home/news' />} />
+                    <Route path="/home" element={<Navigate to='/home/message' />} />
                   </Route>
                   {/* 6.x以后用 <Navigate/> 重定向  */}
                   <Route path="*" element={<Navigate to="/about" />} ></Route>

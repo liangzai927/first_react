@@ -27,9 +27,12 @@ class MyMessage extends Component {
             messageArr.map(msgObj => {
               return (
                 <li key={msgObj.id}>
-                  {/* 传递state参数 */}
-                  <Link to='/home/message/detail' state={{ id: msgObj.id, title: msgObj.title }} >{msgObj.title}</Link>
-                  {/* <Link to={`/home/message/detail?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link> */}
+                  {/* 传递search参数 */}
+                  {/* 开启replace模式 会覆盖之前的浏览记录 */}
+                  {/* <Link to={{ pathname: '/home/message/detail', state: { id: msgObj.id, title: msgObj.title } }}>{msgObj.title}</Link> */}
+                  <Link to={`/home/message/detail?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>
+                  &nbsp;<button onClick={() => this.replaceShow(msgObj.id, msgObj.title, false)}>push查看</button>
+                  &nbsp;<button onClick={() => this.replaceShow(msgObj.id, msgObj.title, true)}>replace查看</button>
                 </li>
               )
             })

@@ -14,7 +14,6 @@ class MyDetail extends Component {
   render() {
 
     const { locationData } = this.props
-    console.log(locationData)
     const { id, title } = locationData.state ? locationData.state : qs.parse(locationData.search.slice(1))
     let resultData = DetailData.find((detailObj) => {
       return detailObj.id === id
