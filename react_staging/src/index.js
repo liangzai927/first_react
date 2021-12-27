@@ -2,15 +2,12 @@
 import React from 'react'
 //引入ReactDOM
 import ReactDOM from 'react-dom';
-//
-import { BrowserRouter } from 'react-router-dom'
+
 
 //引入app
 import App from './App'
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <App />,
   document.getElementById('root')
 )
