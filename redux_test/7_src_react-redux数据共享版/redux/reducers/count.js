@@ -3,7 +3,7 @@
   2.reducer函数会接受两个参数, 分别问: 之前的状态(preState), 动作对象(action)
 */
 
-import { INCREMENT, DECREMENT } from './constant'
+import { INCREMENT, DECREMENT } from '../constant'
 
 export default function countReducer(pre = 0, action) {
   //从 action 对象中获取 type, data
