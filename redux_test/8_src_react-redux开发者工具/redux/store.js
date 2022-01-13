@@ -1,0 +1,24 @@
+/* 
+  该文件专门用于暴露一个 store 对象 整个应用只有一个 store 对象
+
+*/
+
+
+//引入 createStore, 专门用于创建redux里的store
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+//引入为 Count 组件服务的reducer
+import countReducer from './reducers/count'
+import personReducer from './reducers/person'
+//引入 redux-thunk 用于支持异步action
+import thunk from 'redux-thunk'
+//引入 redux-devtools-extension
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+//合并reducer
+const allReducer = combineReducers({
+  countReducer,
+  personReducer
+})
+
+export default createStore(allReducer, composeWithDevTools(applyMiddleware(thunk)))
+

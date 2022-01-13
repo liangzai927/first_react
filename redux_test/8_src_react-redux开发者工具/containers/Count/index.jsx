@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 //引入action
 import {
-  increment,
-  decrement,
-  incrementAsync
+  createIncrementAction,
+  createDecrementAction,
+  createIncrementAsyncAction
 } from '../../redux/actions/count'
 
 //定义 UI 组件
@@ -17,23 +17,23 @@ class Count extends Component {
   //加法
   increment = () => {
     const { value } = this.selectNumber
-    this.props.increment(value * 1)
+    this.props.createIncrementAction(value * 1)
     // console.log(value);
   }
   //减法
   decrement = () => {
     const { value } = this.selectNumber
-    this.props.decrement(value * 1)
+    this.props.createDecrementAction(value * 1)
   }
   //奇数再加
   incrementIfOdd = () => {
     const { value } = this.selectNumber
-    if (this.props.count % 2 !== 0) this.props.increment(value * 1)
+    if (this.props.count % 2 !== 0) this.props.createIncrementAction(value * 1)
   }
   //异步加
   incrementAsync = () => {
     const { value } = this.selectNumber
-    this.props.incrementAsync(value * 1, 500)
+    this.props.createIncrementAsyncAction(value * 1, 500)
   }
 
   render() {
@@ -57,14 +57,11 @@ class Count extends Component {
 
 //使用 connect()(ui组件) 创建并暴露一个 Count 的容器组件
 export default connect(
-  state => ({ 
-    count: state.count, 
-    person: state.person 
-  }),
+  state => ({ count: state.countReducer, person: state.personReducer }),
   {
-    increment,
-    decrement,
-    incrementAsync
+    createIncrementAction,
+    createDecrementAction,
+    createIncrementAsyncAction
   }
 )(Count)
 
